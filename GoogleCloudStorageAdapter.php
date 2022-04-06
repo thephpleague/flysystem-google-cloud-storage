@@ -79,6 +79,10 @@ class GoogleCloudStorageAdapter implements FilesystemAdapter
         $prefixedPath = $this->prefixer->prefixPath($path);
         $options = ['name' => $prefixedPath];
 
+        if ($metadata = $config->get('metadata')) {
+            $options['metadata'] = $metadata;
+        }
+
         $visibility = $config->get(Config::OPTION_VISIBILITY, $this->defaultVisibility);
         $predefinedAcl = $this->visibilityHandler->visibilityToPredefinedAcl($visibility);
 
