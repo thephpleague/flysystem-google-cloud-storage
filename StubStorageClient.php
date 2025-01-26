@@ -21,7 +21,7 @@ class StubStorageClient extends StorageClient
      */
     protected $projectId;
 
-    public function bucket($name, $userProject = false)
+    public function bucket($name, $userProject = false, array $options = [])
     {
         $knownBuckets = ['flysystem', 'no-acl-bucket-for-ci'];
         $isKnownBucket = in_array($name, $knownBuckets);
